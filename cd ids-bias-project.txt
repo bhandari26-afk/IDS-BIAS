@@ -1,0 +1,2 @@
+cd ids-bias-project
+.venv\Scripts\activate.bat

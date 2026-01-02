@@ -1,0 +1,39 @@
+paths:
+  raw_data: "data/raw/"
+  combined_data: "data/combined/CICIDS2017_combined.csv"
+  preprocessed_data: "data/processed/sample_preprocessed.csv"
+  splits_dir: "data/splits/"
+  scaler_path: "models/scaler_cicids.joblib"
+  processed: "data/processed/preprocessed.csv"
+  models: "models"
+
+data:
+  target_col: "Label"   # column to predict in CICIDS2017
+  target: Label
+  sample_size: 100000
+
+preprocessing:
+  missing_threshold: 0.4    # drop rows with >40% missing values
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+
+split:
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+  stratify: true
+
+columns:
+  label_col: "Label"
+  drop_cols: ["Flow ID", "Timestamp"]   # drop irrelevant or non-numeric columns
+  group_col: "Protocol"                 # used later for group fairness analysis
+
+scaling:
+  method: "standard"  # or "minmax"
+
+training:
+  test_size: 0.2
+  val_size: 0.1
+  max_rows: 500000   # optional, for memory safety
+
